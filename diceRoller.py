@@ -41,7 +41,7 @@ def main():
         print("----------------")
         command = input()
         print("----------------")
-        command_split = command.split(" ")
+        command_split = command.split()
         match command_split[0]:
             case "h":
                 print(commands)
