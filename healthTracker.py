@@ -27,7 +27,7 @@ def addCharacter(name, health):
 
 def printGroup():
     for character in group:
-        print(character.getName(), character.getHealth())
+        print(character.getName(), character.getHealth(), "/", character.getMaxHealth())
 
 def main():
     print(title)
@@ -36,19 +36,24 @@ def main():
         print("Current Group:")
         printGroup()
         print()
-        command = input()
-        if command == "1":
-            print("Enter Name")
-            name = input()
-            print("Enter Health")
-            health = int(input())
-            addCharacter(name, health)
-            print("Added", name, "with", health, "health")
-        elif command == "2":
+        command = input().split()
+
+        if command[0] == "1":
+            if len(command) == 3:
+                addCharacter(command[1], int(command[2]))
+                print("Added", command[1], "with", command[2], "health")
+            if len(command) == 1:
+                print("Enter Name")
+                name = input()
+                print("Enter Health")
+                health = int(input())
+                addCharacter(name, health)
+                print("Added", name, "with", health, "health")
+        elif command[0] == "2":
             print()
             print("--Group--")
             printGroup()
-        elif command == "3":
+        elif command[0] == "3":
             print("Enter Name")
             name = input()
             print("Enter Damage")
@@ -56,7 +61,7 @@ def main():
             for character in group:
                 if character.getName() == name:
                     character.damage(damage)
-        elif command == "4":
+        elif command[0] == "4":
             print("Enter Name")
             name = input()
             print("Enter Heal")
@@ -64,7 +69,7 @@ def main():
             for character in group:
                 if character.getName() == name:
                     character.heal(heal)
-        elif command == "5":
+        elif command[0] == "5":
             break
         print("----------------")
 

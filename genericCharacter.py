@@ -14,6 +14,9 @@ class genericCharacter:
     def getHealth(self):
         return self.currentHealth
     
+    def getMaxHealth(self):
+        return self.maxHealth
+    
     def damage(self, amount):
         self.currentHealth -= amount
         if self.currentHealth <= 0:
